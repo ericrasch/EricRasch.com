@@ -1,5 +1,7 @@
 <?php
-  if ( true !== strpos( $_SERVER['REQUEST_URI'], 'ericrasch.com' ) ) {
+
+  $whitelist = array('127.0.0.1', "::1");
+  if( in_array( $_SERVER['REMOTE_ADDR'], $whitelist ) ) {
     define( 'PROD_ENV', 'local' );
   }
 
@@ -8,4 +10,5 @@
   <link rel="stylesheet" href="http://ericrasch.com/assets/dist/style.min.css">
   <?php } else { ?>
   <link rel="stylesheet" href="assets/dev/style.css">
+
 <?php } ?>
